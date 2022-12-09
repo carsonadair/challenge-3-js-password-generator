@@ -1,16 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = ("0123456789");
-var symbols = ("!@#$%&.()^");
-var lowLetters = ("abcdefghijklmnopqrstuvwxyz");
-var upLetters =("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+var numbers = "0123456789";
+var symbols = "!@#$%&.()^";
+var lowLetters = "abcdefghijklmnopqrstuvwxyz";
+var upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function askLength() {
-  var charLength = prompt ("How many characters should your password be?");
-  if (charLength<8) {
+  var charLength = prompt("How many characters should your password be?");
+  if (charLength < 8) {
     alert("Password too small, please pick a number between 8 and 128.")
     askLength();
-  } else if (charLength>128){
+  } else if (charLength > 128) {
     alert("Password too long, please pick a number between 8 and 128.")
     askLength();
   } else if (isNaN(charLength)) {
@@ -23,46 +23,97 @@ function askLength() {
 
 function askUpletters() {
   var askUpLettersv = confirm("Do you want uppercase letters in your password?");
-  if (askUpLettersv = true){
-    return upLetters.string;
+  if (askUpLettersv) {
+    return upLetters.split("");
   } else {
-
+    return "";
   }
 }
 
 function askLowletters() {
   var askLowLettersv = confirm("Do you want lowercase letters in your password?");
-  if (askLowLettersv = true) {
-    return lowLetters.string;
-  } else {
-
+  if (askLowLettersv) {
+    return lowLetters.split("");
+  }else {
+    return "";
   }
 }
 
 function askNum() {
   var askNumv = confirm("Do you want numbers in your password?");
-  if (askNumv = true) {
-    return numbers.string;
-  } else {
-    
+  if (askNumv) {
+    return numbers.split("");
+  }else {
+    return "";
   }
 }
 
 function askSym() {
   var askSymv = confirm("Do you want special symbols in your password?");
-  if (askSymv = true) {
-    return symbols.string;
-  } else {
-    
+  if (askSymv) {
+    return symbols.split("");
+  }else {
+    return "";
   }
 }
 
-function generatePassword(){
+function generatePassword() {
+  var characters = [];
+  var password = [];
   console.log("Hey! You clicked the button!");
-  askLength();
-  askUpletters();
-  
-  return "Generated Password";
+  var pwLength = askLength();
+  characters.push(...askUpletters());
+  characters.push(...askLowletters());
+  characters.push(...askNum());
+  characters.push(...askSym());
+  console.log(characters);
+  if (characters.length === 0) {
+    alert("You must choose at least one type of character.");
+    generatePassword();
+  }
+  for (i=0; i<pwLength; i++) {
+    var random = Math.floor(Math.random() * (characters.length - 1));
+    password.push(characters[random]);
+    console.log(random);
+  }
+
+  return password.join("");
+ /* var charLength = prompt("How many characters should your password be?");
+  if (charLength < 8) {
+    alert("Password too small, please pick a number between 8 and 128.")
+    askLength();
+  } else if (charLength > 128) {
+    alert("Password too long, please pick a number between 8 and 128.")
+    askLength();
+  } else if (isNaN(charLength)) {
+    alert("Not valid. Please select a number between 8 and 128.")
+    askLength();
+  } else {
+    return charLength;
+  }
+
+  var askUpLettersv = confirm("Do you want uppercase letters in your password?");
+  if (askUpLettersv) {
+    return upLetters.string;
+  }
+
+  var askLowLettersv = confirm("Do you want lowercase letters in your password?");
+  if (askLowLettersv) {
+    return lowLetters.string;
+  }
+
+  var askNumv = confirm("Do you want numbers in your password?");
+  if (askNumv) {
+    return numbers.string;
+  }
+
+  var askSymv = confirm("Do you want special symbols in your password?");
+  if (askSymv) {
+    return symbols.string;
+  } */
+
+
+
   /* 
   The alert should ask how many characters the password should have - minimum 8, maximum 128
   The alert should then ask if it should use special characters.
