@@ -19,12 +19,48 @@ function askLength() {
   } else {
     return charLength;
   }
-
 };
+
+function askUpletters() {
+  var askUpLettersv = confirm("Do you want uppercase letters in your password?");
+  if (askUpLettersv = true){
+    return upLetters.string;
+  } else {
+
+  }
+}
+
+function askLowletters() {
+  var askLowLettersv = confirm("Do you want lowercase letters in your password?");
+  if (askLowLettersv = true) {
+    return lowLetters.string;
+  } else {
+
+  }
+}
+
+function askNum() {
+  var askNumv = confirm("Do you want numbers in your password?");
+  if (askNumv = true) {
+    return numbers.string;
+  } else {
+    
+  }
+}
+
+function askSym() {
+  var askSymv = confirm("Do you want special symbols in your password?");
+  if (askSymv = true) {
+    return symbols.string;
+  } else {
+    
+  }
+}
 
 function generatePassword(){
   console.log("Hey! You clicked the button!");
   askLength();
+  askUpletters();
   
   return "Generated Password";
   /* 
