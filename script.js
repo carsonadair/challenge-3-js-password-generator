@@ -1,31 +1,39 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = [0,1,2,3,4,5,6,7,8,9];
-var symbols = ["@","$","#","_","-","%","!","&"]
+var numbers = ("0123456789");
+var symbols = ("!@#$%&.()^");
+var lowLetters = ("abcdefghijklmnopqrstuvwxyz");
+var upLetters =("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-var alpha = Array.from(Array(26)).map((e, i) => i + 65);
-var upLetters = alpha.map((x) => String.fromCharCode(x));
-console.log(upLetters);
+function askLength() {
+  var charLength = prompt ("How many characters should your password be?");
+  if (charLength<8) {
+    alert("Password too small, please pick a number between 8 and 128.")
+    askLength();
+  } else if (charLength>128){
+    alert("Password too long, please pick a number between 8 and 128.")
+    askLength();
+  } else if (isNaN(charLength)) {
+    alert("Not valid. Please select a number between 8 and 128.")
+    askLength();
+  } else {
+    return charLength;
+  }
 
-var lowLetters = [];
-
-upLetters.forEach(element => {
-  lowLetters.push(element.toLowerCase());
-});
-
-console.log(lowLetters);
+};
 
 function generatePassword(){
   console.log("Hey! You clicked the button!");
+  askLength();
+  
   return "Generated Password";
   /* 
-  When the button "generate password" is clicked, an alert should pop up.
   The alert should ask how many characters the password should have - minimum 8, maximum 128
   The alert should then ask if it should use special characters.
   The alert should then ask if it should include numbers.
   The alert should then ask if it should include upper case letters.
   The alert should then ask if it should use lowercase letters.
-
+  
 
   */
 }
