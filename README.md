@@ -8,4 +8,6 @@ Here is a picture of the deployed application.
 ![When the button is clicked, it prompts a box requesting more information on requirements.](./Assets/2.png)
 ![The final result is a password generated with whatever parameters the user selected.](./Assets/3.png)
 
+And here is a link to the deployed application.
 
+https://carsonadair.github.io/challenge-3-js-password-generator/
