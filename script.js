@@ -1,10 +1,14 @@
 // Assignment Code
+
+//Stating all the global variables.
 var generateBtn = document.querySelector("#generate");
 var numbers = "0123456789";
 var symbols = "!@#$%&.()^";
 var lowLetters = "abcdefghijklmnopqrstuvwxyz";
 var upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+
+//The function asking how many characters the password should be.
 function askLength() {
   var charLength = prompt("How many characters should your password be?");
   if (charLength < 8) {
@@ -21,6 +25,7 @@ function askLength() {
   };
 };
 
+//The function asking if any uppercase letters should be in the password.
 function askUpletters() {
   var askUpLettersv = confirm("Do you want uppercase letters in your password?");
   if (askUpLettersv) {
@@ -30,6 +35,7 @@ function askUpletters() {
   };
 };
 
+//The function asking if any lowercase letters should be in the password.
 function askLowletters() {
   var askLowLettersv = confirm("Do you want lowercase letters in your password?");
   if (askLowLettersv) {
@@ -39,6 +45,7 @@ function askLowletters() {
   };
 };
 
+//The function asking if any numbers should be in the password.
 function askNum() {
   var askNumv = confirm("Do you want numbers in your password?");
   if (askNumv) {
@@ -48,6 +55,7 @@ function askNum() {
   };
 };
 
+//The function asking if any symbols should be in the password.
 function askSym() {
   var askSymv = confirm("Do you want special symbols in your password?");
   if (askSymv) {
@@ -57,24 +65,25 @@ function askSym() {
   };
 };
 
+//The function to generate the password into a string.
 function generatePassword() {
   var characters = [];
   var pass = [];
-  console.log("Hey! You clicked the button!");
   var pwLength = askLength();
   characters.push(...askUpletters());
   characters.push(...askLowletters());
   characters.push(...askNum());
   characters.push(...askSym());
-  console.log(characters);
   if (characters.length === 0) {
     alert("You must choose at least one type of character.")
-    generatePassword();
+    characters.push(...askUpletters());
+    characters.push(...askLowletters());
+    characters.push(...askNum());
+    characters.push(...askSym());
   }; 
   for (i = 0; i < pwLength; i++) {
     var random = Math.floor(Math.random() * (characters.length - 1));
     pass.push(characters[random]);
-    console.log(random);
   };
 
   return pass.join("");
